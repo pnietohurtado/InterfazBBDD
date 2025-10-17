@@ -7,6 +7,7 @@ package com.mycompany.conexionbbdd;
 import Auxiliares.Add_Pedido;
 import Auxiliares.Add_Product;
 import Auxiliares.Add_cliente;
+import Auxiliares.Delete;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -40,8 +41,8 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
         Panel2.add(new Add_Product(), "Producto"); 
         Panel2.add(new Add_cliente(), "Cliente");
         Panel2.add(new Add_Pedido(), "Pedido");
+        Panel2.add(new Delete(), "Delete"); 
         /*
-        Panel2.add(new PanelCuentas(), "Cuentas"); 
         Panel2.add(new PanelHora(), "Hora"); 
         Panel2.add(new PanelWindows(), "Windows"); 
         */
@@ -60,7 +61,7 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
         Panel1 = new javax.swing.JPanel();
         Inicio = new javax.swing.JButton();
         Sistema = new javax.swing.JButton();
-        Cuentas = new javax.swing.JButton();
+        Windows1 = new javax.swing.JButton();
         Hora = new javax.swing.JButton();
         Windows = new javax.swing.JButton();
         Panel2 = new javax.swing.JPanel();
@@ -82,9 +83,9 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
 
         Inicio.setBackground(new java.awt.Color(255, 255, 255));
         Inicio.setForeground(new java.awt.Color(0, 0, 0));
+        Inicio.setText("Añadir Producto");
         Inicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         Inicio.setFocusable(false);
-        Inicio.setLabel("Inicio");
         Inicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 InicioMouseClicked(evt);
@@ -105,9 +106,9 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
 
         Sistema.setBackground(new java.awt.Color(255, 255, 255));
         Sistema.setForeground(new java.awt.Color(0, 0, 0));
+        Sistema.setText("Añadir Cliente");
         Sistema.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         Sistema.setFocusable(false);
-        Sistema.setLabel("Sistema");
         Sistema.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SistemaMouseClicked(evt);
@@ -119,6 +120,11 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
                 SistemaMouseExited(evt);
             }
         });
+        Sistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SistemaActionPerformed(evt);
+            }
+        });
         Sistema.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SistemaKeyPressed(evt);
@@ -126,31 +132,31 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
         });
         Panel1.add(Sistema);
 
-        Cuentas.setBackground(new java.awt.Color(255, 255, 255));
-        Cuentas.setForeground(new java.awt.Color(0, 0, 0));
-        Cuentas.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        Cuentas.setLabel("Cuentas de Usuario");
-        Cuentas.addMouseListener(new java.awt.event.MouseAdapter() {
+        Windows1.setBackground(new java.awt.Color(255, 255, 255));
+        Windows1.setForeground(new java.awt.Color(0, 0, 0));
+        Windows1.setText("Añadir Pedido");
+        Windows1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        Windows1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CuentasMouseClicked(evt);
+                Windows1MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CuentasMouseEntered(evt);
+                Windows1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                CuentasMouseExited(evt);
+                Windows1MouseExited(evt);
             }
         });
-        Cuentas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CuentasKeyPressed(evt);
+        Windows1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Windows1ActionPerformed(evt);
             }
         });
-        Panel1.add(Cuentas);
+        Panel1.add(Windows1);
 
         Hora.setBackground(new java.awt.Color(255, 255, 255));
         Hora.setForeground(new java.awt.Color(0, 0, 0));
-        Hora.setText("Hora e Idioma");
+        Hora.setText("Buscar Pedido por ID");
         Hora.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         Hora.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -172,7 +178,7 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
 
         Windows.setBackground(new java.awt.Color(255, 255, 255));
         Windows.setForeground(new java.awt.Color(0, 0, 0));
-        Windows.setText("Windows Update");
+        Windows.setText("Borrar Pedido");
         Windows.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         Windows.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -208,14 +214,14 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(564, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         Panel2.add(jPanel2, "card2");
@@ -246,12 +252,6 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
         Sistema.setBackground(Color.WHITE);
     }//GEN-LAST:event_SistemaMouseExited
 
-    private void CuentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentasMouseEntered
-        Cuentas.setBackground(Color.red);    }//GEN-LAST:event_CuentasMouseEntered
-
-    private void CuentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentasMouseExited
-Cuentas.setBackground(Color.WHITE);    }//GEN-LAST:event_CuentasMouseExited
-
     private void HoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HoraMouseEntered
         Hora.setBackground(Color.red);
     }//GEN-LAST:event_HoraMouseEntered
@@ -281,15 +281,12 @@ Cuentas.setBackground(Color.WHITE);    }//GEN-LAST:event_CuentasMouseExited
         cardLayout.show(Panel2, "Cliente");
     }//GEN-LAST:event_SistemaMouseClicked
 
-    private void CuentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentasMouseClicked
-        cardLayout.show(Panel2, "Cuentas");     }//GEN-LAST:event_CuentasMouseClicked
-
     private void HoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HoraMouseClicked
-        cardLayout.show(Panel2, "Pedido"); 
+       
     }//GEN-LAST:event_HoraMouseClicked
 
     private void WindowsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WindowsMouseClicked
-        cardLayout.show(Panel2, "Windows");
+        cardLayout.show(Panel2, "Delete");
     }//GEN-LAST:event_WindowsMouseClicked
 
     
@@ -302,9 +299,6 @@ Cuentas.setBackground(Color.WHITE);    }//GEN-LAST:event_CuentasMouseExited
     private void SistemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemaKeyPressed
         cardLayout.show(Panel2, "Sistema");
     }//GEN-LAST:event_SistemaKeyPressed
-
-    private void CuentasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CuentasKeyPressed
-cardLayout.show(Panel2, "Cuentas");      }//GEN-LAST:event_CuentasKeyPressed
 
     private void HoraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HoraKeyPressed
         // TODO add your handling code here:
@@ -334,6 +328,26 @@ cardLayout.show(Panel2, "Cuentas");      }//GEN-LAST:event_CuentasKeyPressed
         requestFocusInWindow(); 
 
     }//GEN-LAST:event_formKeyPressed
+
+    private void Windows1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Windows1MouseClicked
+       cardLayout.show(Panel2, "Pedido");
+    }//GEN-LAST:event_Windows1MouseClicked
+
+    private void Windows1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Windows1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Windows1MouseEntered
+
+    private void Windows1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Windows1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Windows1MouseExited
+
+    private void Windows1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Windows1ActionPerformed
+       cardLayout.show(Panel2, "Pedido");
+    }//GEN-LAST:event_Windows1ActionPerformed
+
+    private void SistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SistemaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SistemaActionPerformed
 
     
     
@@ -374,13 +388,13 @@ cardLayout.show(Panel2, "Cuentas");      }//GEN-LAST:event_CuentasKeyPressed
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cuentas;
     private javax.swing.JButton Hora;
     private javax.swing.JButton Inicio;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel2;
     private javax.swing.JButton Sistema;
     private javax.swing.JButton Windows;
+    private javax.swing.JButton Windows1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

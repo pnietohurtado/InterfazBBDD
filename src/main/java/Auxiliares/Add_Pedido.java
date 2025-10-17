@@ -5,7 +5,6 @@
 package Auxiliares;
 
 import com.mycompany.conexionbbdd.Conexion;
-import com.mycompany.conexionbbdd.Interfaz;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,7 +54,7 @@ public class Add_Pedido extends javax.swing.JPanel {
             jTextArea1.setText(texto);
             
         } catch (SQLException ex) {
-            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Add_Pedido.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
