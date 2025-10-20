@@ -4,6 +4,13 @@
  */
 package Auxiliares;
 
+import com.mycompany.conexionbbdd.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author PC220
@@ -14,12 +21,21 @@ public class ByID extends javax.swing.JPanel {
      * Creates new form ByID
      */
     
+    PreparedStatement pt; 
+    ResultSet rs; 
+    int id_pedido = 0; 
+    int cantidad =0; 
+    int id_producto = 0; 
+    String texto = ""; 
+    
     private int id = 0; 
     
     public ByID() {
         initComponents();
     }
 
+     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +54,11 @@ public class ByID extends javax.swing.JPanel {
         jLabel1.setText("ID Pedido: ");
 
         jButton1.setText("Send");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -72,6 +93,59 @@ public class ByID extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private String nombre, ciudad, fecha, nombre_producto; 
+    private int cantidad_producto, precio, total; 
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            if(!(ID.equals(""))){
+                pt = Conexion.getConnection().prepareStatement("SELECT \n" +
+                                        "	c.nombre AS Nombre,\n" +
+                                        "    c.ciudad AS Ciudad, \n" +
+                                        "    p.fecha AS Fecha, \n" +
+                                        "    pr.nombre AS Nombre_Producto, \n" +
+                                        "    pp.cantidad AS Cantidad,\n" +
+                                        "    pr.precio AS Precio, \n" +
+                                        "    SUM(pr.precio * pp.cantidad) AS Total \n" +
+                                        "FROM pedido p \n" +
+                                        "	JOIN cliente c ON p.id_cliente = c.id_cliente\n" +
+                                        "    JOIN pedido_producto pp ON p.id_pedido = pp.id_pedido\n" +
+                                        "    JOIN producto pr ON pr.id_producto = pp.id_producto\n" +
+                                        "WHERE p.id_pedido = ?\n" +
+                                        "GROUP BY c.nombre, c.ciudad, p.fecha, pr.nombre,pp.cantidad, pr.precio;");
+                pt.setInt(1, Integer.parseInt(ID.getText()));
+                rs = pt.executeQuery(); 
+                
+                while(rs.next()){
+                    cantidad_producto = rs.getInt("Cantidad"); 
+                    precio = rs.getInt("Precio"); 
+                    total = rs.getInt("Total"); 
+                    nombre = rs.getString("Nombre"); 
+                    ciudad = rs.getString("Ciudad"); 
+                    fecha = rs.getString("Fecha"); 
+                    nombre_producto = rs.getString("Nombre_Producto"); 
+
+
+                    String mensaje = "Nombre : " + this.nombre + " Ciudad : " 
+                            + this.ciudad+ " Fecha : "+ this.fecha + " Nombre del Producto : "+ this.nombre_producto
+                            + " Cantidad: " + this.cantidad 
+                            + " Precio : " + this.precio 
+                            + " Total : " + this.total+  "\n"; 
+
+                    texto = texto + mensaje; 
+                
+                }
+
+                jTextArea1.setText(""); 
+                jTextArea1.setText(texto);
+
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Delete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 
 public class Conexion {
-    private static String url ="jdbc:mysql://localhost:3306/tienda_db?serverTimezone=UTC" ; 
-    private static String pass = "Med@c"; 
+    private static String url ="jdbc:mysql://188.78.176.33:3306/tienda_db?serverTimezone=UTC" ; 
+    private static String pass ="123"; 
     private static String user = "root"; 
     private static Connection con; 
     

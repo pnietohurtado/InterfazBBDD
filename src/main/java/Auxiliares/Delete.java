@@ -23,7 +23,7 @@ public class Delete extends javax.swing.JPanel {
     
     private int id_pedido; 
     private int id_producto; 
-    private String fecha; 
+    private int cantidad; 
     
     PreparedStatement pt; 
     ResultSet rs; 
@@ -41,12 +41,12 @@ public class Delete extends javax.swing.JPanel {
             rs = pt.executeQuery(); 
             
             while(rs.next()){
-                id_pedido = rs.getInt("id_cliente"); 
-                fecha = rs.getString("fecha"); 
+                id_pedido = rs.getInt("id_pedido"); 
+                cantidad= rs.getInt("cantidad"); 
                 id_producto = rs.getInt("id_producto"); 
                 
                 
-                String mensaje = "ID Pedido : " + this.id_pedido + " ID Producto : " + this.id_producto + " Fecha: " + this.fecha +  "\n"; 
+                String mensaje = "ID Pedido : " + this.id_pedido + " ID Producto : " + this.id_producto + " Cantidad: " + this.cantidad +  "\n"; 
                 
                 texto = texto + mensaje; 
                 

@@ -7,6 +7,7 @@ package com.mycompany.conexionbbdd;
 import Auxiliares.Add_Pedido;
 import Auxiliares.Add_Product;
 import Auxiliares.Add_cliente;
+import Auxiliares.ByID;
 import Auxiliares.Delete;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -41,6 +42,7 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
         Panel2.add(new Add_Product(), "Producto"); 
         Panel2.add(new Add_cliente(), "Cliente");
         Panel2.add(new Add_Pedido(), "Pedido");
+        Panel2.add(new ByID(), "ByID"); 
         Panel2.add(new Delete(), "Delete"); 
         /*
         Panel2.add(new PanelHora(), "Hora"); 
@@ -167,6 +169,11 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 HoraMouseExited(evt);
+            }
+        });
+        Hora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HoraActionPerformed(evt);
             }
         });
         Hora.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -348,6 +355,10 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
     private void SistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SistemaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SistemaActionPerformed
+
+    private void HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraActionPerformed
+        cardLayout.show(Panel2, "ByID");
+    }//GEN-LAST:event_HoraActionPerformed
 
     
     
