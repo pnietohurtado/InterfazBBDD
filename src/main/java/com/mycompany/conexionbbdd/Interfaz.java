@@ -19,14 +19,14 @@ import javax.swing.JPanel;
  *
  * @author PC220
  */
-public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
+public class Interfaz extends javax.swing.JFrame {
 
     private CardLayout cardLayout; 
     
     /**
      * Creates new form UltimoEjercicioPreEvaluable
      */
-    public UltimoEjercicioPreEvaluable() {
+    public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         configurarCardLayout(); 
@@ -243,36 +243,34 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseEntered
-        Inicio.setBackground(Color.red);
         
     }//GEN-LAST:event_InicioMouseEntered
 
     private void InicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseExited
-        Inicio.setBackground(Color.WHITE);
+
     }//GEN-LAST:event_InicioMouseExited
 
     private void SistemaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SistemaMouseEntered
-        Sistema.setBackground(Color.red);
+
     }//GEN-LAST:event_SistemaMouseEntered
 
     private void SistemaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SistemaMouseExited
-        Sistema.setBackground(Color.WHITE);
+
     }//GEN-LAST:event_SistemaMouseExited
 
     private void HoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HoraMouseEntered
-        Hora.setBackground(Color.red);
+
     }//GEN-LAST:event_HoraMouseEntered
 
     private void HoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HoraMouseExited
-        Hora.setBackground(Color.WHITE);
+
     }//GEN-LAST:event_HoraMouseExited
 
     private void WindowsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WindowsMouseEntered
-        Windows.setBackground(Color.red);
+
     }//GEN-LAST:event_WindowsMouseEntered
 
     private void WindowsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WindowsMouseExited
-        Windows.setBackground(Color.WHITE);
     }//GEN-LAST:event_WindowsMouseExited
 
     // Para cambiar a la ventana de inicio.
@@ -320,16 +318,16 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
         int code = evt.getKeyCode(); 
         
         if(code == KeyEvent.VK_Q){
-            cardLayout.show(Panel2, "Inicio");
+            cardLayout.show(Panel2, "Producto");
 
         }else if(code == KeyEvent.VK_W){
-            cardLayout.show(Panel2, "Sistema");
+            cardLayout.show(Panel2, "Cliente");
         }else if(code == KeyEvent.VK_E){
-            cardLayout.show(Panel2, "Cuentas"); 
+            cardLayout.show(Panel2, "Pedido"); 
         }else if(code == KeyEvent.VK_R){
-            cardLayout.show(Panel2, "Hora"); 
+            cardLayout.show(Panel2, "ByID"); 
         }else if(code == KeyEvent.VK_T){
-            cardLayout.show(Panel2, "Windows");
+            cardLayout.show(Panel2, "Delete");
         }
         
         requestFocusInWindow(); 
@@ -379,21 +377,23 @@ public class UltimoEjercicioPreEvaluable extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UltimoEjercicioPreEvaluable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UltimoEjercicioPreEvaluable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UltimoEjercicioPreEvaluable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UltimoEjercicioPreEvaluable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UltimoEjercicioPreEvaluable().setVisible(true);
+                new Interfaz().setVisible(true);
             }
         });
     }
